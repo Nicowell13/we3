@@ -3,14 +3,17 @@ import { cn } from "@/lib/utils";
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   hoverable?: boolean;
+  glow?: "cyan" | "pink" | "none";
 }
 
-export function Card({ className, hoverable = false, children, ...props }: CardProps) {
+export function Card({ className, hoverable = false, glow = "none", children, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-xl bg-slate-900/60 border border-slate-800 p-5 shadow-sm backdrop-blur-sm",
-        hoverable && "transition-all duration-200 hover:border-slate-700 hover:bg-slate-900/90 hover:shadow-md",
+        "cyber-card cyber-cut rounded-lg p-5",
+        hoverable && "hover:border-[#00F0FF]/60 cursor-pointer",
+        glow === "cyan" && "border-[#00F0FF]/40 glow-cyan-sm",
+        glow === "pink" && "border-[#FF007F]/40 glow-pink-sm",
         className
       )}
       {...props}

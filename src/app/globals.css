@@ -2,24 +2,88 @@
 
 @layer base {
   :root {
-    --bg-main: #0b0e17;
-    --bg-card: #121826;
-    --bg-card-hover: #1a2236;
-    --border-color: #1f293d;
-    --primary: #6366f1;
-    --primary-glow: #4f46e5;
-    --accent: #06b6d4;
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --success: #10b981;
-    --danger: #ef4444;
-    --warning: #f59e0b;
+    --bg-primary: #050811;
+    --bg-secondary: #0b0f19;
+    --bg-card: rgba(15, 23, 42, 0.75);
+    --border-card: rgba(0, 240, 255, 0.15);
+    --border-hover: rgba(0, 240, 255, 0.5);
+    --neon-cyan: #00f0ff;
+    --neon-pink: #ff007f;
+    --neon-purple: #9d4edd;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
   }
 }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.5) 0%, transparent 80%);
+  color: var(--text-primary);
+  font-family: var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Cyberpunk & Glow Utilities */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+}
+
+.glow-cyan-sm {
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.25);
+}
+
+.glow-pink {
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.35);
+}
+
+.glow-pink-sm {
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.25);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.glow-text-pink {
+  text-shadow: 0 0 12px rgba(255, 0, 127, 0.6);
+}
+
+.cyber-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-card);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cyber-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.cyber-cut {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+.cyber-cut-sm {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 8px,
+    100% 100%,
+    8px 100%,
+    0 calc(100% - 8px)
+  );
 }
